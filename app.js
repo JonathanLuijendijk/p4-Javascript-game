@@ -468,6 +468,19 @@ const background2 = new Sprite3 ({
     height: 576
 })
 
+const background3 = new Sprite3 ({
+    position: {
+    x: 0,
+    y: 0
+    },
+    velocity: {
+        x: 0,
+        y: 0,
+    },
+    width: 1024,
+    height: 450
+})
+
 const startButton = new Sprite2 ({
     position: {
     x: 562,
@@ -525,9 +538,10 @@ function animate() {
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height)
 
-    background.draw()
+    background.update()
     background1.update()
     background2.update()
+    background3.update()
 
     terrain1.update()
     terrain2.update()
@@ -649,6 +663,17 @@ function animate() {
 
         console.log('Entered HELPZONE2')
 
+    } else if (player.position.x <= background3.position.x + background3.width 
+        && player.position.x + player.width >= background3.position.x 
+        && player.position.y + player.height >= background3.position.y 
+        && player.position.y <= background3.position.y + background3.height) {
+        
+        c.fillStyle = 'white';
+        c.font = "48px Arial";
+        c.fillText("BLOCK MAN'S SURVIVAL", 210, 100);
+
+        console.log('Entered HELPZONE2')
+
     } else if (player.position.x <= startButton.position.x + startButton.width 
         && player.position.x + player.width >= startButton.position.x 
         && player.position.y + player.height >= startButton.position.y 
@@ -668,6 +693,8 @@ function animate() {
         startButton.position.y = startButton.position.y + 1000;
         startButton2.position.x = startButton2.position.x + 1000;
         startButton2.position.y = startButton2.position.y + 1000;
+        background3.position.x = background3.position.x + -1500;
+        background3.position.x = background3.position.x + -1500;
         console.log('starting')
 
         
@@ -682,7 +709,7 @@ function animate() {
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("LEVEL 2", 145, 100);
+        c.fillText("LEVEL 2", 400, 100);
 
     } else if (player.position.x <= startButton2.position.x + startButton2.width 
         && player.position.x + player.width >= startButton2.position.x 
@@ -715,6 +742,8 @@ function animate() {
         startButton.position.y = startButton.position.y + 1000;
         startButton2.position.x = startButton2.position.x + 1000;
         startButton2.position.y = startButton2.position.y + 1000;
+        background3.position.x = background3.position.x + -1500;
+        background3.position.x = background3.position.x + -1500;
         console.log('starting2')
 
         
@@ -729,7 +758,7 @@ function animate() {
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("LEVEL 1", 145, 100);
+        c.fillText("LEVEL 1", 400, 100);
 
     } else if (player.position.x <= endButton.position.x + endButton.width 
         && player.position.x + player.width >= endButton.position.x 
