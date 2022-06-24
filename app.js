@@ -138,7 +138,11 @@ const playerPositionY = function(e) {
 window.addEventListener("mousemove", playerPositionX);
 window.addEventListener("mousemove", playerPositionY);
 
+let bg_SOUND=new Audio('music/Clavar-la-espada.mp3');
 
+bg_SOUND.volume=0.5;      
+
+bg_SOUND.play();
 
 const background = new Backgroundimg ({
     position: {
@@ -769,7 +773,7 @@ function animate() {
         
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("WACTH OUT FOR THE RAIN", 200, 100);
+        c.fillText("WATCH OUT FOR THE RAIN", 200, 100);
 
         console.log('Entered HELPZONE2')
 
