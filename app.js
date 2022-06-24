@@ -7,11 +7,16 @@ canvas.height = 576
 
 c.fillRect(0, 0, canvas.width, canvas.height)
 
+/* Creating a new audio object. */
+
 let bg_SOUND=new Audio('music/Mettaton-v1.mp3');
 
 bg_SOUND.volume=0.5;      
 
 bg_SOUND.play();
+
+/* The Backgroundimg class is a class that creates a background image object that can be drawn to the
+canvas. */
 
 class Backgroundimg {
     constructor({position, imageSrc }) {
@@ -29,6 +34,8 @@ class Backgroundimg {
     }
 }
 
+
+/* It's a class that creates a sprite with a position, velocity, width, and height. */
 
 class Sprite {
     constructor({position, velocity, width, height}) {
@@ -49,6 +56,8 @@ class Sprite {
     }
 }
 
+/* It's a class that creates a sprite with a position, velocity, width, and height. */
+
 class Sprite1 {
     constructor({position, velocity, width, height}) {
         this.position = position
@@ -58,7 +67,7 @@ class Sprite1 {
     }
 
     draw() {
-        c.fillStyle = 'DodgerBlue'
+        c.fillStyle = 'RoyalBlue'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 
@@ -67,6 +76,8 @@ class Sprite1 {
        this.position.y += this.velocity.y
     }
 }
+
+/* It's a class that creates a sprite with a position, velocity, width, and height. */
 
 class Sprite2 {
     constructor({position, velocity, width, height}) {
@@ -91,6 +102,8 @@ class Sprite2 {
     }
 }
 
+/* It's a class that creates a sprite with a position, velocity, width, and height. */
+
 class Sprite3 {
     constructor({position, velocity, width, height}) {
         this.position = position
@@ -110,6 +123,8 @@ class Sprite3 {
     }
 }
 
+/* The Sprite4 class is a class that creates a sprite that is a line. */
+
 class Sprite4 {
     constructor({position, velocity}) {
         this.position = position
@@ -127,12 +142,16 @@ class Sprite4 {
     }
 }
 
+/* Creating a function called playerPositionX that takes in a parameter called e. */
+
 const playerPositionX = function(e) {
     while (player.position.x != e.clientX) {
         player.position.x = e.clientX
         console.log(e.clientX);
     }
 }
+
+/* Creating a function called playerPositionY that takes in a parameter called e. */
 
 const playerPositionY = function(e) {
     while (player.position.y != e.clientY) {
@@ -141,11 +160,20 @@ const playerPositionY = function(e) {
     }
 }
 
+/* Adding an event listener to the window object. The event listener is listening for the mousemove
+event. When the mousemove event is triggered, the playerPositionX function is called. */
+
 window.addEventListener("mousemove", playerPositionX);
+
+/* Adding an event listener to the window object. The event listener is listening for the mousemove
+event. When the mousemove event is triggered, the playerPositionY function is called. */
+
 window.addEventListener("mousemove", playerPositionY);
 
 
 
+
+/* Creating a new instance of the Backgroundimg class. */
 
 const background = new Backgroundimg ({
     position: {
@@ -155,6 +183,8 @@ const background = new Backgroundimg ({
     imageSrc: './img/background.png'
 })
 
+
+/* Creating a new sprite object. */
 
 const player = new Sprite1 ({
     position: {
@@ -579,10 +609,15 @@ const openDoorButton2 = new Sprite2 ({
     height: 20
 })
 
+
+/* Calling the update function for each object. */
+
 function animate() {
     window.requestAnimationFrame(animate)
     c.fillStyle = 'gray'
     c.fillRect(0, 0, canvas.width, canvas.height)
+
+    player.update()
 
     background.update()
     background1.update()
@@ -612,7 +647,6 @@ function animate() {
     rainBlock15.update()
     rainBlock16.update()
 
-    player.update()
     startButton.update()
     startButton2.update()
     endButton.update()
@@ -620,6 +654,10 @@ function animate() {
     openDoorButton2.update()
     endBlock1.update()
     endBlock2.update()
+
+    /* Checking if the player is colliding with the terrain1 object. If it is, it will display the text
+    "YOU DIED" on the canvas. It will then reload the page.
+    */ 
 
     if (player.position.x <= terrain1.position.x + terrain1.width 
         && player.position.x + player.width >= terrain1.position.x 
@@ -777,7 +815,8 @@ function animate() {
         endBlock2.velocity.y = 0;
 
         window.location.reload();
-    } else if (player.position.x <= background1.position.x + background1.width 
+    } /* Checking if the player is within the bounds of the background1 object. */
+    else if (player.position.x <= background1.position.x + background1.width 
         && player.position.x + player.width >= background1.position.x 
         && player.position.y + player.height >= background1.position.y 
         && player.position.y <= background1.position.y + background1.height) {
@@ -810,7 +849,12 @@ function animate() {
 
         console.log('Entered HELPZONE2')
 
-    } else if (player.position.x <= background4.position.x + background4.width 
+    } /* The above code is checking if the player is colliding with the background4 object. If the
+    player is colliding with the background4 object, the code will pause the rainBlock objects,
+    the endButton object, the endBlock2 object, and the background2 object. After 1 second, the
+    code will resume the rainBlock objects, the endButton object, the endBlock2 object, and the
+    background2 object. */
+    else if (player.position.x <= background4.position.x + background4.width 
         && player.position.x + player.width >= background4.position.x 
         && player.position.y + player.height >= background4.position.y 
         && player.position.y <= background4.position.y + background4.height
@@ -840,22 +884,22 @@ function animate() {
             player.pausing = false;
 
         setTimeout (() => {
-        rainBlock1.velocity.y = rainBlock1.velocity.y + 12;
-        rainBlock2.velocity.y = rainBlock2.velocity.y + 12;
-        rainBlock3.velocity.y = rainBlock3.velocity.y + 12;
-        rainBlock4.velocity.y = rainBlock4.velocity.y + 12;
-        rainBlock5.velocity.y = rainBlock5.velocity.y + 12;
-        rainBlock6.velocity.y = rainBlock6.velocity.y + 12;
-        rainBlock7.velocity.y = rainBlock7.velocity.y + 12;
-        rainBlock8.velocity.y = rainBlock8.velocity.y + 12;
-        rainBlock9.velocity.y = rainBlock9.velocity.y + 12;
-        rainBlock10.velocity.y = rainBlock10.velocity.y + 12;
-        rainBlock11.velocity.y = rainBlock11.velocity.y + 12;
-        rainBlock12.velocity.y = rainBlock12.velocity.y + 12;
-        rainBlock13.velocity.y = rainBlock13.velocity.y + 12;
-        rainBlock14.velocity.y = rainBlock14.velocity.y + 12;
-        rainBlock15.velocity.y = rainBlock15.velocity.y + 12;
-        rainBlock16.velocity.y = rainBlock16.velocity.y + 12;
+        rainBlock1.velocity.y = rainBlock1.velocity.y + 13;
+        rainBlock2.velocity.y = rainBlock2.velocity.y + 13;
+        rainBlock3.velocity.y = rainBlock3.velocity.y + 13;
+        rainBlock4.velocity.y = rainBlock4.velocity.y + 13;
+        rainBlock5.velocity.y = rainBlock5.velocity.y + 13;
+        rainBlock6.velocity.y = rainBlock6.velocity.y + 13;
+        rainBlock7.velocity.y = rainBlock7.velocity.y + 13;
+        rainBlock8.velocity.y = rainBlock8.velocity.y + 13;
+        rainBlock9.velocity.y = rainBlock9.velocity.y + 13;
+        rainBlock10.velocity.y = rainBlock10.velocity.y + 13;
+        rainBlock11.velocity.y = rainBlock11.velocity.y + 13;
+        rainBlock12.velocity.y = rainBlock12.velocity.y + 13;
+        rainBlock13.velocity.y = rainBlock13.velocity.y + 13;
+        rainBlock14.velocity.y = rainBlock14.velocity.y + 13;
+        rainBlock15.velocity.y = rainBlock15.velocity.y + 13;
+        rainBlock16.velocity.y = rainBlock16.velocity.y + 13;
 
         endButton.velocity.y = endButton.velocity.y + 2;
         endBlock2.velocity.y = endBlock2.velocity.y + 2;
@@ -895,7 +939,9 @@ function animate() {
 
         console.log('pausing')
 
-    } else if (player.position.x <= startButton.position.x + startButton.width 
+    } /* Checking if the player is clicking on the start button. If the player is clicking on the start
+    button, then the game will start. */
+    else if (player.position.x <= startButton.position.x + startButton.width 
         && player.position.x + player.width >= startButton.position.x 
         && player.position.y + player.height >= startButton.position.y 
         && player.position.y <= startButton.position.y + startButton.height
@@ -940,22 +986,22 @@ function animate() {
         && player.position.y <= startButton2.position.y + startButton2.height
         && player.clicking) {
         
-        rainBlock1.velocity.y = rainBlock1.velocity.y + 12;
-        rainBlock2.velocity.y = rainBlock2.velocity.y + 12;
-        rainBlock3.velocity.y = rainBlock3.velocity.y + 12;
-        rainBlock4.velocity.y = rainBlock4.velocity.y + 12;
-        rainBlock5.velocity.y = rainBlock5.velocity.y + 12;
-        rainBlock6.velocity.y = rainBlock6.velocity.y + 12;
-        rainBlock7.velocity.y = rainBlock7.velocity.y + 12;
-        rainBlock8.velocity.y = rainBlock8.velocity.y + 12;
-        rainBlock9.velocity.y = rainBlock9.velocity.y + 12;
-        rainBlock10.velocity.y = rainBlock10.velocity.y + 12;
-        rainBlock11.velocity.y = rainBlock11.velocity.y + 12;
-        rainBlock12.velocity.y = rainBlock12.velocity.y + 12;
-        rainBlock13.velocity.y = rainBlock13.velocity.y + 12;
-        rainBlock14.velocity.y = rainBlock14.velocity.y + 12;
-        rainBlock15.velocity.y = rainBlock15.velocity.y + 12;
-        rainBlock16.velocity.y = rainBlock16.velocity.y + 12;
+        rainBlock1.velocity.y = rainBlock1.velocity.y + 13;
+        rainBlock2.velocity.y = rainBlock2.velocity.y + 13;
+        rainBlock3.velocity.y = rainBlock3.velocity.y + 13;
+        rainBlock4.velocity.y = rainBlock4.velocity.y + 13;
+        rainBlock5.velocity.y = rainBlock5.velocity.y + 13;
+        rainBlock6.velocity.y = rainBlock6.velocity.y + 13;
+        rainBlock7.velocity.y = rainBlock7.velocity.y + 13;
+        rainBlock8.velocity.y = rainBlock8.velocity.y + 13;
+        rainBlock9.velocity.y = rainBlock9.velocity.y + 13;
+        rainBlock10.velocity.y = rainBlock10.velocity.y + 13;
+        rainBlock11.velocity.y = rainBlock11.velocity.y + 13;
+        rainBlock12.velocity.y = rainBlock12.velocity.y + 13;
+        rainBlock13.velocity.y = rainBlock13.velocity.y + 13;
+        rainBlock14.velocity.y = rainBlock14.velocity.y + 13;
+        rainBlock15.velocity.y = rainBlock15.velocity.y + 13;
+        rainBlock16.velocity.y = rainBlock16.velocity.y + 13;
 
         endButton.velocity.y = endButton.velocity.y + 2;
         endBlock2.velocity.y = endBlock2.velocity.y + 2;
@@ -1005,7 +1051,9 @@ function animate() {
         c.fillStyle = 'white';
         c.font = "48px Arial";
         c.fillText("WOW GOOD JOB YOU WIN", 200, 100);
-    } else if (player.position.x <= openDoorButton.position.x + openDoorButton.width 
+    } /* The above code is checking if the player is clicking on the button. If the player is clicking
+    on the button, the page will reload. */
+    else if (player.position.x <= openDoorButton.position.x + openDoorButton.width 
         && player.position.x + player.width >= openDoorButton.position.x 
         && player.position.y + player.height >= openDoorButton.position.y 
         && player.position.y <= openDoorButton.position.y + openDoorButton.height
@@ -1016,7 +1064,9 @@ function animate() {
             }, 100)
 
 
-    } else if (player.position.x <= openDoorButton2.position.x + openDoorButton2.width 
+    } /* Checking if the player is touching the button and if the player is clicking. If both of these
+    are true, then the door will open. */
+    else if (player.position.x <= openDoorButton2.position.x + openDoorButton2.width 
         && player.position.x + player.width >= openDoorButton2.position.x 
         && player.position.y + player.height >= openDoorButton2.position.y 
         && player.position.y <= openDoorButton2.position.y + openDoorButton2.height
@@ -1025,6 +1075,8 @@ function animate() {
         terrain3.velocity.y = terrain3.velocity.y - 3;
         terrain3.position.x = terrain3.position.x + 1000;
         terrain3.position.y = terrain3.position.y + 1000;
+        background1.position.x = background1.position.x + 1000;
+
 
 
     } else if (player.position.x <= openDoorButton.position.x + openDoorButton.width 
@@ -1043,7 +1095,9 @@ function animate() {
         c.fillStyle = 'white';
         c.font = "48px Arial";
         c.fillText("CLICK ME FAST I'LL HELP YOU!", 200, 100);
-    } else if (player.position.x <= rainBlock1.position.x + rainBlock1.width 
+    } /* The above code is checking if the player is colliding with the rainBlock1. If the player is
+    colliding with the rainBlock1, then the game will reload. */
+    else if (player.position.x <= rainBlock1.position.x + rainBlock1.width 
         && player.position.x + player.width >= rainBlock1.position.x 
         && player.position.y + player.height >= rainBlock1.position.y 
         && player.position.y <= rainBlock1.position.y + rainBlock1.height) {
