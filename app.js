@@ -4,8 +4,14 @@ const c = canvas.getContext('2d');
 canvas.width = 1024
 canvas.height = 576
 
+
 c.fillRect(0, 0, canvas.width, canvas.height)
 
+let bg_SOUND=new Audio('music/Mettaton-v1.mp3');
+
+bg_SOUND.volume=0.5;      
+
+bg_SOUND.play();
 
 class Backgroundimg {
     constructor({position, imageSrc }) {
@@ -52,7 +58,7 @@ class Sprite1 {
     }
 
     draw() {
-        c.fillStyle = 'lightgreen'
+        c.fillStyle = 'DodgerBlue'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 
@@ -138,11 +144,8 @@ const playerPositionY = function(e) {
 window.addEventListener("mousemove", playerPositionX);
 window.addEventListener("mousemove", playerPositionY);
 
-let bg_SOUND=new Audio('music/Clavar-la-espada.mp3');
 
-bg_SOUND.volume=0.5;      
 
-bg_SOUND.play();
 
 const background = new Backgroundimg ({
     position: {
@@ -200,14 +203,14 @@ const terrain2 = new Sprite ({
 const terrain3 = new Sprite ({
     position: {
     x: 0,
-    y: -1300
+    y: -1676
     },
     velocity: {
         x: 0,
         y: 0,
     },
     width: 1024,
-    height: 300
+    height: 576
 })
 
 const endBlock1 = new Sprite ({
@@ -449,13 +452,13 @@ const rainBlock16 = new Sprite ({
 const background1 = new Sprite3 ({
     position: {
     x: 60,
-    y: -330
+    y: -330 
     },
     velocity: {
         x: 0,
         y: 0,
     },
-    width: 1024,
+    width: 904,
     height: 320
 })
 
@@ -563,9 +566,22 @@ const openDoorButton = new Sprite2 ({
     height: 20
 })
 
+const openDoorButton2 = new Sprite2 ({
+    position: {
+    x: 984,
+    y: -200
+    },
+    velocity: {
+        x: 0,
+        y: 0,
+    },
+    width: 20,
+    height: 20
+})
+
 function animate() {
     window.requestAnimationFrame(animate)
-    c.fillStyle = 'black'
+    c.fillStyle = 'gray'
     c.fillRect(0, 0, canvas.width, canvas.height)
 
     background.update()
@@ -601,6 +617,7 @@ function animate() {
     startButton2.update()
     endButton.update()
     openDoorButton.update()
+    openDoorButton2.update()
     endBlock1.update()
     endBlock2.update()
 
@@ -625,6 +642,7 @@ function animate() {
         terrain2.velocity.y = 0;
         terrain3.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
         window.location.reload();
     } else if (player.position.x <= terrain2.position.x + terrain2.width 
@@ -649,6 +667,7 @@ function animate() {
         terrain3.velocity.y = 0;
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= terrain3.position.x + terrain3.width 
         && player.position.x + player.width >= terrain3.position.x 
@@ -672,6 +691,7 @@ function animate() {
         terrain3.velocity.y = 0;
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } if (player.position.x <= endBlock1.position.x + endBlock1.width 
         && player.position.x + player.width >= endBlock1.position.x 
@@ -692,6 +712,7 @@ function animate() {
         terrain2.velocity.y = 0;
         terrain3.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
         rainBlock1.velocity.y = 0;
         rainBlock2.velocity.y = 0;
@@ -733,6 +754,7 @@ function animate() {
         terrain2.velocity.y = 0;
         terrain3.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
         rainBlock1.velocity.y = 0;
         rainBlock2.velocity.y = 0;
@@ -762,7 +784,7 @@ function animate() {
         
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("CLICK ME FAST I'LL HELP YOU", 200, 100);
+        c.fillText("CLICK ME.                               NO, CLICK ME.", 20, 100);
 
         console.log('Entered HELPZONE')
 
@@ -855,6 +877,7 @@ function animate() {
         background1.velocity.y = 0;
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
             
 
             player.pausing = false;
@@ -867,6 +890,7 @@ function animate() {
         background1.velocity.y = background1.velocity.y + 2;
         endButton.velocity.y = endButton.velocity.y + 2;
         openDoorButton.velocity.y = openDoorButton.velocity.y + 2;
+        openDoorButton2.velocity.y = openDoorButton2.velocity.y + 2;
         }, 1000)
 
         console.log('pausing')
@@ -886,6 +910,7 @@ function animate() {
         background1.velocity.y = background1.velocity.y + 2;
         endButton.velocity.y = endButton.velocity.y + 2;
         openDoorButton.velocity.y = openDoorButton.velocity.y + 2;
+        openDoorButton2.velocity.y = openDoorButton2.velocity.y + 2;
         startButton.position.x = startButton.position.x + 1000;
         startButton.position.y = startButton.position.y + 1000;
         startButton2.position.x = startButton2.position.x + 1000;
@@ -986,10 +1011,20 @@ function animate() {
         && player.position.y <= openDoorButton.position.y + openDoorButton.height
         && player.clicking) {
         
+            setTimeout (() => {
+                window.location.reload();
+            }, 100)
+
+
+    } else if (player.position.x <= openDoorButton2.position.x + openDoorButton2.width 
+        && player.position.x + player.width >= openDoorButton2.position.x 
+        && player.position.y + player.height >= openDoorButton2.position.y 
+        && player.position.y <= openDoorButton2.position.y + openDoorButton2.height
+        && player.clicking) {
+        
         terrain3.velocity.y = terrain3.velocity.y - 3;
         terrain3.position.x = terrain3.position.x + 1000;
         terrain3.position.y = terrain3.position.y + 1000;
-        console.log('starting')
 
 
     } else if (player.position.x <= openDoorButton.position.x + openDoorButton.width 
@@ -997,13 +1032,17 @@ function animate() {
         && player.position.y + player.height >= openDoorButton.position.y 
         && player.position.y <= openDoorButton.position.y + openDoorButton.height) {
 
-        background.velocity.y = background.velocity.y - 2;
-        background.position.x = background.position.x + 1000;
-        background.position.y = background.position.y + 1000;
+        c.fillStyle = 'white';
+        c.font = "48px Arial";
+        c.fillText("CLICK ME FAST I'LL HELP YOU ;)", 200, 100);
+    } else if (player.position.x <= openDoorButton2.position.x + openDoorButton2.width 
+        && player.position.x + player.width >= openDoorButton2.position.x 
+        && player.position.y + player.height >= openDoorButton2.position.y 
+        && player.position.y <= openDoorButton2.position.y + openDoorButton2.height) {
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("CLICK ME FAST I'LL HELP YOU", 200, 100);
+        c.fillText("CLICK ME FAST I'LL HELP YOU!", 200, 100);
     } else if (player.position.x <= rainBlock1.position.x + rainBlock1.width 
         && player.position.x + player.width >= rainBlock1.position.x 
         && player.position.y + player.height >= rainBlock1.position.y 
@@ -1037,6 +1076,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock2.position.x + rainBlock2.width 
         && player.position.x + player.width >= rainBlock2.position.x 
@@ -1071,6 +1111,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock3.position.x + rainBlock3.width 
         && player.position.x + player.width >= rainBlock3.position.x 
@@ -1105,6 +1146,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock4.position.x + rainBlock4.width 
         && player.position.x + player.width >= rainBlock4.position.x 
@@ -1139,6 +1181,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock5.position.x + rainBlock5.width 
         && player.position.x + player.width >= rainBlock5.position.x 
@@ -1173,6 +1216,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock6.position.x + rainBlock6.width 
         && player.position.x + player.width >= rainBlock6.position.x 
@@ -1207,6 +1251,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock7.position.x + rainBlock7.width 
         && player.position.x + player.width >= rainBlock7.position.x 
@@ -1241,6 +1286,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock8.position.x + rainBlock8.width 
         && player.position.x + player.width >= rainBlock8.position.x 
@@ -1275,6 +1321,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock9.position.x + rainBlock9.width 
         && player.position.x + player.width >= rainBlock9.position.x 
@@ -1309,6 +1356,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock10.position.x + rainBlock10.width 
         && player.position.x + player.width >= rainBlock10.position.x 
@@ -1343,6 +1391,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock11.position.x + rainBlock11.width 
         && player.position.x + player.width >= rainBlock11.position.x 
@@ -1377,6 +1426,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock12.position.x + rainBlock12.width 
         && player.position.x + player.width >= rainBlock12.position.x 
@@ -1411,6 +1461,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock13.position.x + rainBlock13.width 
         && player.position.x + player.width >= rainBlock13.position.x 
@@ -1445,6 +1496,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock14.position.x + rainBlock14.width 
         && player.position.x + player.width >= rainBlock14.position.x 
@@ -1479,6 +1531,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock15.position.x + rainBlock15.width 
         && player.position.x + player.width >= rainBlock15.position.x 
@@ -1513,6 +1566,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     } else if (player.position.x <= rainBlock16.position.x + rainBlock16.width 
         && player.position.x + player.width >= rainBlock16.position.x 
@@ -1547,6 +1601,7 @@ function animate() {
 
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
+        openDoorButton2.velocity.y = 0;
 
     }
 }
