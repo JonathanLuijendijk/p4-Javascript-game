@@ -260,7 +260,7 @@ const rainBlock2 = new Sprite ({
 
 const rainBlock3 = new Sprite ({
     position: {
-    x: 503,
+    x: 960,
     y: -1400
     },
     velocity: {
@@ -286,7 +286,7 @@ const rainBlock4 = new Sprite ({
 
 const rainBlock5 = new Sprite ({
     position: {
-    x: 424,
+    x: 725,
     y: -1800
     },
     velocity: {
@@ -325,7 +325,7 @@ const rainBlock7 = new Sprite ({
 
 const rainBlock8 = new Sprite ({
     position: {
-    x: 54,
+    x: 28,
     y: -2400
     },
     velocity: {
@@ -351,7 +351,7 @@ const rainBlock9 = new Sprite ({
 
 const rainBlock10 = new Sprite ({
     position: {
-    x: 90,
+    x: 868,
     y: -2800
     },
     velocity: {
@@ -390,7 +390,7 @@ const rainBlock12 = new Sprite ({
 
 const rainBlock13 = new Sprite ({
     position: {
-    x: 479,
+    x: 526,
     y: -3400
     },
     velocity: {
@@ -416,7 +416,7 @@ const rainBlock14 = new Sprite ({
 
 const rainBlock15 = new Sprite ({
     position: {
-    x: 193,
+    x: 238,
     y: -3800
     },
     velocity: {
@@ -429,7 +429,7 @@ const rainBlock15 = new Sprite ({
 
 const rainBlock16 = new Sprite ({
     position: {
-    x: 281,
+    x: 478,
     y: -4000
     },
     velocity: {
@@ -479,6 +479,32 @@ const background3 = new Sprite3 ({
     },
     width: 1024,
     height: 450
+})
+
+const background4 = new Sprite3 ({
+    position: {
+    x: 0,
+    y: 0
+    },
+    velocity: {
+        x: 0,
+        y: 0,
+    },
+    width: 1024,
+    height: 576
+})
+
+const background5 = new Sprite3 ({
+    position: {
+    x: 0,
+    y: -1000
+    },
+    velocity: {
+        x: 0,
+        y: 0,
+    },
+    width: 1024,
+    height: 576
 })
 
 const startButton = new Sprite2 ({
@@ -542,6 +568,8 @@ function animate() {
     background1.update()
     background2.update()
     background3.update()
+    background4.update()
+    background5.update()
 
     terrain1.update()
     terrain2.update()
@@ -641,6 +669,88 @@ function animate() {
         endButton.velocity.y = 0;
         openDoorButton.velocity.y = 0;
 
+    } if (player.position.x <= endBlock1.position.x + endBlock1.width 
+        && player.position.x + player.width >= endBlock1.position.x 
+        && player.position.y + player.height >= endBlock1.position.y 
+        && player.position.y <= endBlock1.position.y + endBlock1.height) {
+
+        c.fillStyle = 'white';
+        c.font = "48px Arial";
+        c.fillText("YOU DIED", 400, 100);
+
+        setTimeout (() => {
+            window.location.reload();
+        }, 100)
+
+        player.position.x = 1000;
+        player.position.y = 1000;
+        terrain1.velocity.y = 0;
+        terrain2.velocity.y = 0;
+        terrain3.velocity.y = 0;
+        openDoorButton.velocity.y = 0;
+
+        rainBlock1.velocity.y = 0;
+        rainBlock2.velocity.y = 0;
+        rainBlock3.velocity.y = 0;
+        rainBlock4.velocity.y = 0;
+        rainBlock5.velocity.y = 0;
+        rainBlock6.velocity.y = 0;
+        rainBlock7.velocity.y = 0;
+        rainBlock8.velocity.y = 0;
+        rainBlock9.velocity.y = 0;
+        rainBlock10.velocity.y = 0;
+        rainBlock11.velocity.y = 0;
+        rainBlock12.velocity.y = 0;
+        rainBlock13.velocity.y = 0;
+        rainBlock14.velocity.y = 0;
+        rainBlock15.velocity.y = 0;
+        rainBlock16.velocity.y = 0;
+    
+        endButton.velocity.y = 0;
+        endBlock1.velocity.y = 0;
+
+        window.location.reload();
+    } if (player.position.x <= endBlock2.position.x + endBlock2.width 
+        && player.position.x + player.width >= endBlock2.position.x 
+        && player.position.y + player.height >= endBlock2.position.y 
+        && player.position.y <= endBlock2.position.y + endBlock2.height) {
+
+        c.fillStyle = 'white';
+        c.font = "48px Arial";
+        c.fillText("YOU DIED", 400, 100);
+
+        setTimeout (() => {
+            window.location.reload();
+        }, 100)
+
+        player.position.x = 1000;
+        player.position.y = 1000;
+        terrain1.velocity.y = 0;
+        terrain2.velocity.y = 0;
+        terrain3.velocity.y = 0;
+        openDoorButton.velocity.y = 0;
+
+        rainBlock1.velocity.y = 0;
+        rainBlock2.velocity.y = 0;
+        rainBlock3.velocity.y = 0;
+        rainBlock4.velocity.y = 0;
+        rainBlock5.velocity.y = 0;
+        rainBlock6.velocity.y = 0;
+        rainBlock7.velocity.y = 0;
+        rainBlock8.velocity.y = 0;
+        rainBlock9.velocity.y = 0;
+        rainBlock10.velocity.y = 0;
+        rainBlock11.velocity.y = 0;
+        rainBlock12.velocity.y = 0;
+        rainBlock13.velocity.y = 0;
+        rainBlock14.velocity.y = 0;
+        rainBlock15.velocity.y = 0;
+        rainBlock16.velocity.y = 0;
+    
+        endButton.velocity.y = 0;
+        endBlock2.velocity.y = 0;
+
+        window.location.reload();
     } else if (player.position.x <= background1.position.x + background1.width 
         && player.position.x + player.width >= background1.position.x 
         && player.position.y + player.height >= background1.position.y 
@@ -674,6 +784,89 @@ function animate() {
 
         console.log('Entered HELPZONE2')
 
+    } else if (player.position.x <= background4.position.x + background4.width 
+        && player.position.x + player.width >= background4.position.x 
+        && player.position.y + player.height >= background4.position.y 
+        && player.position.y <= background4.position.y + background4.height
+        && player.pausing) {
+
+
+            rainBlock1.velocity.y = 0;
+            rainBlock2.velocity.y = 0;
+            rainBlock3.velocity.y = 0;
+            rainBlock4.velocity.y = 0;
+            rainBlock5.velocity.y = 0;
+            rainBlock6.velocity.y = 0;
+            rainBlock7.velocity.y = 0;
+            rainBlock8.velocity.y = 0;
+            rainBlock9.velocity.y = 0;
+            rainBlock10.velocity.y = 0;
+            rainBlock11.velocity.y = 0;
+            rainBlock12.velocity.y = 0;
+            rainBlock13.velocity.y = 0;
+            rainBlock14.velocity.y = 0;
+            rainBlock15.velocity.y = 0;
+            rainBlock16.velocity.y = 0;
+    
+            endButton.velocity.y = 0;
+            endBlock2.velocity.y = 0;
+
+            player.pausing = false;
+
+        setTimeout (() => {
+        rainBlock1.velocity.y = rainBlock1.velocity.y + 12;
+        rainBlock2.velocity.y = rainBlock2.velocity.y + 12;
+        rainBlock3.velocity.y = rainBlock3.velocity.y + 12;
+        rainBlock4.velocity.y = rainBlock4.velocity.y + 12;
+        rainBlock5.velocity.y = rainBlock5.velocity.y + 12;
+        rainBlock6.velocity.y = rainBlock6.velocity.y + 12;
+        rainBlock7.velocity.y = rainBlock7.velocity.y + 12;
+        rainBlock8.velocity.y = rainBlock8.velocity.y + 12;
+        rainBlock9.velocity.y = rainBlock9.velocity.y + 12;
+        rainBlock10.velocity.y = rainBlock10.velocity.y + 12;
+        rainBlock11.velocity.y = rainBlock11.velocity.y + 12;
+        rainBlock12.velocity.y = rainBlock12.velocity.y + 12;
+        rainBlock13.velocity.y = rainBlock13.velocity.y + 12;
+        rainBlock14.velocity.y = rainBlock14.velocity.y + 12;
+        rainBlock15.velocity.y = rainBlock15.velocity.y + 12;
+        rainBlock16.velocity.y = rainBlock16.velocity.y + 12;
+
+        endButton.velocity.y = endButton.velocity.y + 2;
+        endBlock2.velocity.y = endBlock2.velocity.y + 2;
+        background2.velocity.y = background2.velocity.y + 4;
+        }, 1000)
+
+        console.log('pausing')
+
+    } else if (player.position.x <= background5.position.x + background5.width 
+        && player.position.x + player.width >= background5.position.x 
+        && player.position.y + player.height >= background5.position.y 
+        && player.position.y <= background5.position.y + background5.height
+        && player.pausing) {
+
+        terrain1.velocity.y = 0;
+        terrain2.velocity.y = 0;
+        terrain3.velocity.y = 0;
+        endBlock1.velocity.y = 0;
+        background1.velocity.y = 0;
+        endButton.velocity.y = 0;
+        openDoorButton.velocity.y = 0;
+            
+
+            player.pausing = false;
+
+        setTimeout (() => {
+        terrain1.velocity.y = terrain1.velocity.y + 2;
+        terrain2.velocity.y = terrain2.velocity.y + 2;
+        terrain3.velocity.y = terrain3.velocity.y + 5.7;
+        endBlock1.velocity.y = endBlock1.velocity.y + 2;
+        background1.velocity.y = background1.velocity.y + 2;
+        endButton.velocity.y = endButton.velocity.y + 2;
+        openDoorButton.velocity.y = openDoorButton.velocity.y + 2;
+        }, 1000)
+
+        console.log('pausing')
+
     } else if (player.position.x <= startButton.position.x + startButton.width 
         && player.position.x + player.width >= startButton.position.x 
         && player.position.y + player.height >= startButton.position.y 
@@ -693,8 +886,9 @@ function animate() {
         startButton.position.y = startButton.position.y + 1000;
         startButton2.position.x = startButton2.position.x + 1000;
         startButton2.position.y = startButton2.position.y + 1000;
-        background3.position.x = background3.position.x + -1500;
-        background3.position.x = background3.position.x + -1500;
+        background3.position.x = background3.position.x + 1500;
+        background4.position.x = background4.position.x + 1500;
+        background5.position.y = background5.position.y + 1000;
         console.log('starting')
 
         
@@ -1361,12 +1555,22 @@ let clicking = false;
         clicking = true;
     };
 
+let pausing = false;
+
+    const paused = function() {
+        pausing = true;
+    };
 
 window.addEventListener('keydown', (event) => {
     console.log(event.key)
     switch (event.key) {
         case ' ':
             player.clicking = true;
+            break
+    }
+    switch (event.key) {
+        case 'p':
+            player.pausing = true;
             break
     }
 })
@@ -1376,6 +1580,11 @@ window.addEventListener('keyup', (event) => {
     switch (event.key) {
         case ' ':
             player.clicking = false;
+            break
+    }
+    switch (event.key) {
+        case 'p':
+            player.pausing = false;
             break
     }
 })
