@@ -1062,6 +1062,8 @@ function animate() {
     c.fillStyle = 'gray'
     c.fillRect(0, 0, canvas.width, canvas.height)
 
+// alles hieronder wordt geupdate zodat het niet wordt gedelete 
+
     player.update()
     cannonLoader.update()
 
@@ -1148,7 +1150,6 @@ function animate() {
         c.font = "48px Arial";
         c.fillText("YOU DIED", 400, 100);
 
-        console.log('Entered Deathzone 1');
 
         setTimeout (() => {
             window.location.reload();
@@ -1172,7 +1173,6 @@ function animate() {
         c.font = "48px Arial";
         c.fillText("YOU DIED", 400, 100);
 
-        console.log('Entered Deathzone 2')
 
         setTimeout (() => {
             window.location.reload();
@@ -1196,7 +1196,6 @@ function animate() {
         c.font = "48px Arial";
         c.fillText("YOU DIED", 400, 100);
 
-        console.log('Entered Deathzone 2')
 
         setTimeout (() => {
             window.location.reload();
@@ -1363,7 +1362,6 @@ function animate() {
         c.font = "48px Arial";
         c.fillText("CLICK ME.                               NO, CLICK ME.", 20, 100);
 
-        console.log('Entered HELPZONE')
 
     } else if (player.position.x <= background2.position.x + background2.width 
         && player.position.x + player.width >= background2.position.x 
@@ -1374,7 +1372,6 @@ function animate() {
         c.font = "48px Arial";
         c.fillText("WATCH OUT FOR THE RAIN", 200, 100);
 
-        console.log('Entered HELPZONE2')
 
     } else if (player.position.x <= background3.position.x + background3.width 
         && player.position.x + player.width >= background3.position.x 
@@ -1383,9 +1380,8 @@ function animate() {
         
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("BLOCK MAN'S SURVIVAL", 210, 100);
+        c.fillText("BLOCK MAN'S REVENGE", 210, 100);
 
-        console.log('Entered HELPZONE2')
 
     } /* The above code is checking if the player is colliding with the background4 object. If the
     player is colliding with the background4 object, the code will pause the rainBlock objects,
@@ -1444,7 +1440,6 @@ function animate() {
         background2.velocity.y = background2.velocity.y + 4;
         }, 1000)
 
-        console.log('pausing')
 
     } else if (player.position.x <= background5.position.x + background5.width 
         && player.position.x + player.width >= background5.position.x 
@@ -1475,7 +1470,6 @@ function animate() {
         openDoorButton2.velocity.y = openDoorButton2.velocity.y + 2;
         }, 1000)
 
-        console.log('pausing')
 
     } else if (player.position.x <= background6.position.x + background6.width 
         && player.position.x + player.width >= background6.position.x 
@@ -1487,7 +1481,6 @@ function animate() {
         c.fillText("DON'T WORRY I'LL LOAD THE CANNON", 50, 100);
         c.fillText("JUST CLICK THE BUTTONS", 180, 150);
 
-        console.log('Entered HELPZONE')
 
     } else if (player.position.x <= background7.position.x + background7.width 
         && player.position.x + player.width >= background7.position.x 
@@ -1497,6 +1490,8 @@ function animate() {
         c.fillStyle = 'white';
         c.font = "48px Arial";
         c.fillText("CONGRATULATIONS YOU BEAT THE GAME", 25, 100);
+        c.fillText("you killed block god", 300, 150);
+        c.fillText("and finally got your revenge", 225, 200);
 
     } else if (player.position.x <= bossDialogue1.position.x + bossDialogue1.width 
         && player.position.x + player.width >= bossDialogue1.position.x 
@@ -1546,8 +1541,6 @@ function animate() {
         background3.position.x = background3.position.x + 1500;
         background4.position.x = background4.position.x + 1500;
         background5.position.y = background5.position.y + 1000;
-        console.log('starting')
-
         
 
 
@@ -1556,7 +1549,6 @@ function animate() {
         && player.position.y + player.height >= startButton.position.y 
         && player.position.y <= startButton.position.y + startButton.height) {
 
-        console.log('starting')
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
@@ -1598,7 +1590,6 @@ function animate() {
         background3.position.x = background3.position.x + -1500;
         background3.position.x = background3.position.x + -1500;
 
-        console.log('starting2')
 
         
 
@@ -1608,7 +1599,6 @@ function animate() {
         && player.position.y + player.height >= startButton2.position.y 
         && player.position.y <= startButton2.position.y + startButton2.height) {
 
-        console.log('starting')
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
@@ -1699,7 +1689,7 @@ function animate() {
         bossMouth.position.y = bossMouth.position.y + 1120;
         bossButton1.position.x = bossButton1.position.x + 2000;
         bossButton5.position.x = bossButton5.position.x + 497.5;
-        bossButton5.position.y = bossButton5.position.y + 1170;
+        bossButton5.position.y = bossButton5.position.y + 1175;
         bossShield1.position.y = bossShield1.position.y + 1190;
         bossShield2.position.y = bossShield2.position.y + 1210;
         bossShield3.position.y = bossShield3.position.y + 1230;
@@ -1875,7 +1865,6 @@ function animate() {
                 window.location.reload();
             }, 500)
 
-        console.log('starting')
 
 
     } else if (player.position.x <= endButton.position.x + endButton.width 
@@ -1976,8 +1965,9 @@ function animate() {
         && cannonBall1.position.x + cannonBall1.width >= bossShield1.position.x 
         && cannonBall1.position.y + cannonBall1.height >= bossShield1.position.y 
         && cannonBall1.position.y <= bossShield1.position.y + bossShield1.height) {
-            cannonBall1.position.x = cannonBall1.position.x + 10000;
-            bossShield1.position.x = bossShield1.position.x + 10000;
+            
+            cannonBall1.position.x = cannonBall1.position.x + 1000;
+            bossShield1.position.x = bossShield1.position.x + 1000;
         
     } else if (cannonBall2.position.x <= bossShield2.position.x + bossShield2.width 
         && cannonBall2.position.x + cannonBall2.width >= bossShield2.position.x 
