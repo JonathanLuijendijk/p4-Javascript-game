@@ -10,5 +10,6 @@ at the end of each level there will be a green button to press.
 if you want to make the game a bit easier press p. 
 pressing p will pause the game for 1 second. 
 make sure to only click p once. 
+p is not allowed on level 3
 
 good luck and have fun.
