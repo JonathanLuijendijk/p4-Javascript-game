@@ -1552,7 +1552,7 @@ function animate() {
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("LEVEL 2 : 'SQUEZE'", 300, 100);
+        c.fillText("LEVEL 2 : 'SQUEEZE'", 280, 100);
 
     } else if (player.position.x <= startButton2.position.x + startButton2.width 
         && player.position.x + player.width >= startButton2.position.x 
