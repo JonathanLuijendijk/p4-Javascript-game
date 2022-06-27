@@ -1552,7 +1552,7 @@ function animate() {
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("LEVEL 2", 400, 100);
+        c.fillText("LEVEL 2 : 'SQUEZE'", 300, 100);
 
     } else if (player.position.x <= startButton2.position.x + startButton2.width 
         && player.position.x + player.width >= startButton2.position.x 
@@ -1602,7 +1602,7 @@ function animate() {
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("LEVEL 1", 400, 100);
+        c.fillText("LEVEL 1 : 'RAIN'", 340, 100);
 
     } else if (player.position.x <= startButton3.position.x + startButton3.width 
         && player.position.x + player.width >= startButton3.position.x 
@@ -1675,7 +1675,7 @@ function animate() {
 
         c.fillStyle = 'white';
         c.font = "48px Arial";
-        c.fillText("LEVEL 3", 400, 100);
+        c.fillText("LEVEL 3 : 'REVENGE'", 290, 100);
 
     } else if (player.position.x <= bossButton1.position.x + bossButton1.width 
         && player.position.x + player.width >= bossButton1.position.x 
