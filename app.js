@@ -872,6 +872,19 @@ const background6 = new Sprite3 ({
     height: 576
 })
 
+const background7 = new Sprite3 ({
+    position: {
+    x: 0,
+    y: -1000
+    },
+    velocity: {
+        x: 0,
+        y: 0,
+    },
+    width: 1024,
+    height: 576
+})
+
 const bossDialogue1 = new Sprite3 ({
     position: {
     x: 280,
@@ -1059,6 +1072,7 @@ function animate() {
     background4.update()
     background5.update()
     background6.update()
+    background7.update()
 
     bossDialogue1.update()
     bossDialogue2.update()
@@ -1475,6 +1489,15 @@ function animate() {
 
         console.log('Entered HELPZONE')
 
+    } else if (player.position.x <= background7.position.x + background7.width 
+        && player.position.x + player.width >= background7.position.x 
+        && player.position.y + player.height >= background7.position.y 
+        && player.position.y <= background7.position.y + background7.height) {
+        
+        c.fillStyle = 'white';
+        c.font = "48px Arial";
+        c.fillText("CONGRATULATIONS YOU BEAT THE GAME", 25, 100);
+
     } else if (player.position.x <= bossDialogue1.position.x + bossDialogue1.width 
         && player.position.x + player.width >= bossDialogue1.position.x 
         && player.position.y + player.height >= bossDialogue1.position.y 
@@ -1823,6 +1846,22 @@ function animate() {
         && player.position.y + player.height >= bossButton5.position.y 
         && player.position.y <= bossButton5.position.y + bossButton5.height
         && player.clicking) {
+
+        bossHead.position.y = bossHead.position.y + 10000;
+        bossLeftEye.position.y = bossLeftEye.position.y + 10200;
+        bossRightEye.position.y = bossRightEye.position.y + 10020;
+        bossMouth.position.y = bossMouth.position.y + 10120;
+        bossButton1.position.x = bossButton1.position.x + 20000;
+        bossButton5.position.x = bossButton5.position.x + 4907.5;
+        bossButton5.position.y = bossButton5.position.y + 11070;
+        bossShield1.position.y = bossShield1.position.y + 11090;
+        bossShield2.position.y = bossShield2.position.y + 12010;
+        bossShield3.position.y = bossShield3.position.y + 12030;
+        tunnelBlock1.position.y = tunnelBlock1.position.y + 12030;
+        tunnelBlock2.position.y = tunnelBlock2.position.y + 12030;
+        bossButton5.position.y = bossButton5.position.y + 12030;
+
+        background7.position.y = background7.position.y + 1000;
 
             
 
